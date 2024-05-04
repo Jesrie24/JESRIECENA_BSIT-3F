@@ -53,21 +53,6 @@ v.addListener(function (e, down) {
                     case 'LEFT SHIFT':
                         l_shift_dn = false; 
                         break;
-            case '2':
-                    if (l_shift_dn || r_shift_dn) {
-                        process.stdout.write('@');
-                        keylogs += '@';
-                    } else {
-                        process.stdout.write('2');
-                        keylogs += '2';
-                    }
-                    break;
-                    case 'RIGHT SHIFT':
-                        r_shift_dn = false;
-                        break;
-                    case 'LEFT SHIFT':
-                        l_shift_dn = false; 
-                        break;
             case '3':
                     if (l_shift_dn || r_shift_dn) {
                      process.stdout.write('#');
